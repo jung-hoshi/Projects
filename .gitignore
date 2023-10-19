@@ -1,0 +1,14 @@
+package-lock.json
+# Игнорировать файлы и папки, связанные с Gulp
+node_modules/
+gulpfile.js
+gulpfile.babel.js
+
+# Игнорировать временные файлы, созданные Gulp
+dist/
+.tmp/
+
+# Игнорировать файлы и папки, связанные с Sass
+.sass-cache/
+.sass-cache-*
+*.css.map
