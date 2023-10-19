@@ -1,0 +1,107 @@
+Инструкция: 
+1. Скачать Node JS
+    node -v - проверка версии node
+    npm -v - проверка версии npm
+2. Установить gulp на комп глобально - npm install gulp-cli -g
+3. Выполнить инициализацию проекта - npm init
+    протыкать enter, если нужно укзаать какие то данные. 
+4. Установить gulp на конкретный проект - npm i gulp
+5. Установить библиотеку для сжатия css - npm install gulp-clean-css
+6. Установить библиотеку что бы переименовать css файл в папке public - npm i gulp-rename
+7. Установить библиотеку - npm i gulp-sass. 
+    npm i - этой еомандой можно установить все зависимости проекта. ( например, что бы не слать огромную папку node_modules, т.е чел просто установит себе все на комп сам. )
+8. Установить библиотеку -  npm i gulp-minify
+
+8. создать файл gulpfile.js
+    в нем: подключить библиотеки: 
+    const gulp = require('gulp'),
+    minifyCSS = require('gulp-clean-css'),
+    rename = require('gulp-rename'),
+    minifyJS = require('gulp-minify');
+    const sass = require('gulp-sass')(require('sass'));
+
+    дописать функции: 
+    gulp.task('move', async function() {
+        return gulp.src('app/css/*.scss')
+            .pipe(sass())
+            .pipe(minifyCSS())
+            .pipe(rename({
+                suffix: '.min'
+            }))
+            .pipe(gulp.dest('public/css'));
+    });
+
+    после того как запустим, в папке public будет лежать файл с именем style.min.css
+
+9. оздать в проекте папку app ( файлы с которыми будем работать - стили и тд) и папку public (готовые файлы для отображения в браузере). 
+    В папку public положить нужно папку где лежат картинки, файл html,  создать папки css, js 
+    В папке app тоже создать папки css, js. 
+
+10.  Настроить sass  - файл style.css переименовать на style.scss
+
+11. Далее запусть функцию: gulp move. 
+    Если появляется такая ошибка: cannot be loaded because running scripts is disabled on this system. For more information, see about_Execution_Policies at 
+    https:/go.microsoft.com/fwlink/?LinkID=135170 - нужно найти на компе PowerShell и запустить с правами администратора. там выполнить команду Set-ExecutionPolicy RemoteSigned
+    после этого все должно работать. 
+
+12. Дописать функции для js 
+    gulp.task('moveJS', async function() {
+    return gulp.src('app/js/*.js')
+        .pipe(minifyJS())
+        .pipe(gulp.dest('public/js'));
+    });
+
+
+13. Дописываем функцию для автоматического обновления html при сохранении чего то в файле. 
+    идем сюда: https://www.npmjs.co ищем это: browser sync
+    Установить библиотеку: npm i browser-sync
+    Дописать в вызовы: BrowserSync = require('browser-sync').create() ;
+    дописать функции: 
+    gulp.task('sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "public/"
+        }
+    });
+
+    gulp.watch("public/*.html").on('change', browserSync.reload);
+    });
+
+
+14. добавить функцию для отслеживания изменений в папке app 
+    function watchAll() {
+    gulp.watch("app/css/*.scss", ['move']);
+    gulp.watch("app/js/*.js", ['moveJS']);
+    }
+
+
+15. Добавить в таски для js и scss строку: .pipe(browserSync.stream());
+
+16. Создаем функцию, что бы запустить таск обвновления и браузера и файлов js и scss
+    gulp.task('default', gulp.parallel('watchAll', 'sync'));
+
+
+17. подумать над этим, не работает как нужно: 
+   &::after{
+        content: "";
+        position: relative;
+        left: 0;
+        bottom: -10px;
+        width: 100%;
+        height: 0;
+        z-index: 1;
+        display: block;
+        border-bottom: 0;
+        border-top: 400px solid transparent;
+        border-right: 100vw solid #fff;
+    }
+
+
+
+
+
+ 
+
+
+    
+ 
