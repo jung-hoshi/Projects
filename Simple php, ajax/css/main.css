@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #eee;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+header {
+    background: #333;
+    padding: 20px 100px;
+    color: #eeeeee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+header .logo {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+header nav a {
+    color: #eeeeee;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: all 500ms ease;
+
+}
+
+header nav a.btn {
+    padding: 5px;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+}
+
+header nav a:hover,
+.post a:hover {
+    color: #a1a1a1;
+}
+
+header nav a.btn:hover {
+    border-color: #a1a1a1;
+
+}
+
+main {
+    float: left;
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 50%;
+}
+
+aside{
+    float: right;
+    margin-top: 50px;
+    margin-right: 100px;
+    width: 400px;
+
+}
+
+aside .info {
+    background: #a1a1a1;
+    color: #333333;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    line-height: 140%;
+    border-radius: 5px;
+}
+
+aside .info h2 {margin-bottom: 10px;}
+
+aside img {
+    width: 100%;
+    border: 5px solid silver;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+form {
+    margin: 30px 0;
+}
+
+form label{
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    resize: vertical;
+}
+
+form button{
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #333333;
+    color: #eeeeee;
+    transition: transform 500ms ease;
+
+}
+
+form button:hover{
+    transform: scale(1.1);
+}
+
+.error-message{
+    color: red;
+    margin: 10px 0;
+    font-weight: 600;
+    display: none;
+}
+
+.post h1 {
+    margin-bottom: 10px;
+}
+
+.post .avtor {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.post .avtor span {
+    background: #a1a1a1;
+    padding: 2px 7px;
+    font-weight: 300;
+    border-radius: 2px;
+
+}
+
+.post {
+    margin-bottom: 30px;
+}
+
+.post a {
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+    width: 100px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: silver;
+    transition: transform 500ms ease;
+    color: #333333;
+
+}
+
+.comment {
+    width: 100%;
+    background: #a1a1a1;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #333333;
+    margin-bottom: 30px;
+}
+
+footer {
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: #eeeeee;
+    background: #333;
+    padding: 30px;
+    margin-top: 100px;
+    box-sizing: border-box;
+}
+
